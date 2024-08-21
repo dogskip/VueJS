@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+//watch는 뷰 객체가 관리하는 태그 내에 변동이 발생하면 watch 객체 내 함수를 만들어서
+//동작을 만든다.
+//a1의 변화가 감지되면 watch내 a1함수가 실행되는 것
+	window.onload = function(){
+		var test1 = new Vue({
+			el:'#test1',
+			data:{
+				a1:'',
+				a2:'',
+				a3:''
+			},
+			watch:{
+				//변수 a1을 감시하는 watch설정
+				a1:function(newVal, oldVal){
+					console.log('a1 새로운 값 :' +newVal +', a1 이전 값:'+oldVal)
+					this.a3='a1: '+newVal
+				},
+				a2:function(newVal, oldVal){
+					console.log('a2 새로운 값 :' +newVal +', a2 이전 값:'+oldVal)
+					this.a3='a2: '+newVal
+				}
+			}	
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="test1">
+		<!-- 인풋요소의 값이 변할 때마다 뷰 객체 내 data내 a1, a2들이 계속 변경됨 -->
+		<!-- 이걸 watch로 감지해서 작업 -->
+		input1:<input type='text' v-model='a1'/><br>
+		input2:<input type='text' v-model='a2'/><br>
+		<h3>{{a1}}</h3>
+		<h3>{{a2}}</h3>
+		<h3>{{a3}}</h3>
+	</div>
+</body>
+</html>

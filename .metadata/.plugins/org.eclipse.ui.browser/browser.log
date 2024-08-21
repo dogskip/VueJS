@@ -1,0 +1,15 @@
+
+7월 30, 2024 14:11:59.23 NEW SESSION
+7월 30, 2024 14:11:59.23 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 30, 2024 14:19:30.53 [13576:12096:0730/161930.533:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 30, 2024 14:19:30.53 [13576:12096:0730/161930.533:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+7월 30, 2024 14:19:30.53 [13576:12096:0730/161930.534:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+7월 30, 2024 14:50:05.53 [13576:12096:0730/165005.535:ERROR:CONSOLE(1)] "Request Runtime.evaluate failed. {"code":-32602,"message":"uniqueContextId not found"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 30, 2024 14:50:05.53 [13576:12096:0730/165005.536:ERROR:CONSOLE(1)] "uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+7월 30, 2024 14:50:05.53 [13576:12096:0730/165005.537:ERROR:CONSOLE(1)] "Extension server error: Inspector protocol error: uniqueContextId not found", source: devtools://devtools/bundled/devtools-frontend/front_end/models/extensions/extensions.js (1)
+7월 30, 2024 15:10:48.81 [13576:11780:0730/171048.784:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+
+7월 30, 2024 18:07:05.71 NEW SESSION
+7월 30, 2024 18:07:05.71 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 30, 2024 18:34:35.83 [10796:10556:0730/183435.770:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+7월 30, 2024 20:27:37.90 [10796:10556:0730/202737.898:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2

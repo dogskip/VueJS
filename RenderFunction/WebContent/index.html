@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+
+	Vue.component('com1',{
+		template : '<h1> hello world</h1>'
+	})	
+	
+	//슬롯태그를 쓰면 html태그 내에 텍스트를 가져다가 출력한다
+	Vue.component('com2',{
+		template : '<h1>Hello world2 : <slot></slot></h1>'
+	})
+
+	//render함수를 이용해서 컴포넌트를 만들 수 있다
+	//createElement함수를 이용해서 태그를 만들 수 있다
+	//createElement함수의 첫번째 인자는 태그이름, 두번째 인자는 속성, 세번째 인자는 텍스트
+	//createElement함수의 두번째 인자는 객체로 만들어야 한다
+	//createElement함수의 세번째 인자는 문자열로 만들어야 한다
+	Vue.component('com3',{
+		render : function(createElement){
+			//var msg = 'hello world3'
+			//com3태그 내에 있는 텍스트를 가져다가 출력한다
+			var msg = this.$slots.default[0].text;
+			//var tagName = this.$attrs.tagname;
+			var tagName = this.tagname;
+			var idValue = this.id;
+			var colorValue = this.color;
+			var bgColorValue = this.bgcolor;
+			//alert(tagName);
+			//alert(idValue);
+			//alert(colorValue);
+			//alert(bgColorValue);
+			var h1_tag = createElement(tagName,{
+				attrs : {
+					//style : 'color:red;background-color:blue;',
+					id:idValue
+				},
+				style:{
+					color:colorValue,
+					backgroundColor:bgColorValue
+				}
+			},msg);
+			return h1_tag;
+		},
+
+		//props를 이용해서 속성을 받아올 수 있다
+		props:{
+			tagname:{
+				type:String,
+				required:true
+			},
+			id:{
+				attributes:String,
+				required:true
+			},
+			color:{
+				attributes:String,
+			},
+			bgcolor:{
+				attributes:String,
+			}
+		}
+	})
+	window.onload = function(){
+		var vm1 = new Vue({
+			el:'#test1',
+		})
+	}
+</script>
+</head>
+<body>
+	<div id = 'test1'>
+		<com1>Apple</com1>
+		<com1>Google</com1>
+		<com1>MicroSoft</com1>
+		<hr>
+		<com2>Apple</com2>
+		<com2>Google</com2>
+		<com2>MicroSoft</com2>	
+		<hr>
+		<!--그냥 'h1'으로 하면 변수 h1을 찾기 때문에 쌍따옴표로 한번 더 감싸서 문자열로 인식시키기-->
+		<!--속성명들은 소문자로 해야한다 랜더시 소문자로만 인식되기 때문-->
+		<com3 :tagname="'h1'" :id="'a1'" :color="'red'" :bgcolor="'blue'">Apple</com3>
+		<com3 :tagname="'h2'" :id="'a2'" :color="'white'" :bgcolor="'black'">Apple</com3>
+		<com3 :tagname="'h3'" :id="'a3'">Apple</com3>
+	</div>
+</body>
+</html>

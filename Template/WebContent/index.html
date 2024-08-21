@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+	window.onload=function(){
+		var test1 = new Vue({
+			el:'#test1',
+			data:{
+				a1:'문자열1',
+				a2:'문자열2',
+				//생문자열 인식
+				a3:'<h3>문자열3</h3>',
+				//html태그에 v-html을 사용하여 인식시킴
+				
+				//속성 바인딩
+				//보통 이런 데이터는 서버에서 가져오지 이렇게 하드코딩하지 않음
+				a4:'image/logo.png',
+				a5:300,
+				a6:200
+				
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="test1">
+		<h3>{{a1}}</h3>
+		<h3>{{a2}}</h3>
+		<div>{{a3}}</div>
+		<!-- a3의 내용이 바로 삽입된다 -->
+		<div v-html='a3'></div>
+		<img src="{{a4}}"/>
+		<img v-bind:src='a4' v-bind:width='a5' v-bind:height='a6'/>
+	</div>
+</body>
+</html>

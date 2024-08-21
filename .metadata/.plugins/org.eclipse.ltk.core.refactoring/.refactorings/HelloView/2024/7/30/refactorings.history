@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HelloView/WebContent/ㅅ드ㅔㅣㅁㅅㄷ.html&apos; to &apos;template.html&apos;" description="Rename resource &apos;ㅅ드ㅔㅣㅁㅅㄷ.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/ㅅ드ㅔㅣㅁㅅㄷ.html" name="template.html" stamp="1721766037665" updateReferences="true"/>
+</session>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.box{
+		width:200px;
+		height:200px;
+		border:1px solid black;
+	}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+	window.onload = function(){
+		var vm1 = new Vue({
+			el:'#test1',
+			methods:{
+				method1:function(){
+					alert('method1')
+				},
+				method2:function(){
+					alert('method2')
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id='test1'>
+		<div @click='method1' class='box'>
+			<button type='button' @click='method2'>버튼</button>
+			<!-- 버블링 발생 막기 -->
+			<button type='button' @click.stop='method2'>버튼2</button>
+		</div>	
+			<!-- a태그 죽이기 -->
+			<!-- <a @click.prevent href='http://www.naver.com'>naver</a> -->
+			
+			<!-- method1만 실행 -->
+			<a @click.prevent='method1' href='http://www.naver.com'>naver</a>
+			
+			<!-- capture를 붙이면 2부터 시작되던 것을 1부터 시작되는 것으로 바꾼다. 즉 버블링에서 캡처링으로 바꿈 -->
+			<div @click.capture='method1' class='box'>
+				<button type ='button' @click='method2'>버튼3</button>
+			</div>
+			
+			<!-- stop수식어는 이벤트 전달을 안하는 거라면 self는 자신의 이벤트가 발생한게 아니라면 자체 이벤트발생 x -->
+			<div @click.self='method1' class='box'>
+				<button type='button' @click='method2'>버튼3</button>
+			</div>
+			
+			<!-- 이벤트 한번만 실행 -->
+			<div @click.once='method1' class='box'>버튼4 </div>
+	</div>
+</body>
+</html>

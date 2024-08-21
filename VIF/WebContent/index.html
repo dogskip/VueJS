@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+	window.onload = function(){
+		var vm1 = new Vue({
+			el:'#test1',
+			data:{
+				a1:100,
+				a2:100,
+				a3:100,
+				a4:100,
+				a5:100,
+				a6:100,
+				a7:100
+			},
+			methods:{
+				setA1 : function(){
+					if(this.a1==100){
+						this.a1=200
+					}else{
+						this.a1=100
+					}
+				},
+				setA2 : function(){
+					if(this.a2==200){
+						this.a2=100
+					}else{
+						this.a2=200
+					}
+				},
+				setA3 : function(){
+					if(this.a3==100){
+						this.a3=200
+					}else{
+						this.a3=100
+					}
+				},
+				setA4 : function(){
+					if(this.a4==100){
+						this.a4=200
+					}else{
+						this.a4=100
+					}
+				},
+				setA5 : function(){
+					if(this.a5==100){
+						this.a5=200
+					}else if(this.a5==200){
+						this.a5=300
+					}else{
+						this.a5=100
+					}
+				},
+				setA6 : function(){
+					if(this.a6==100){
+						this.a6=200
+					}else{
+						this.a6=100
+					}
+				},
+				setA7 : function(){
+					if(this.a7==100){
+						this.a7=200
+					}else{
+						this.a7=100
+					}
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id='test1'>
+		<h3 v-if='a1==100'>1. a1은 {{a1}} 입니다</h3>
+		<h3 v-if='a1!=99'>2. a1은 {{a1}} 입니다</h3>
+		<h3 v-if='a1==200'>3. a1은 200 입니다</h3> <!-- 랜더링되지 않음 -->
+		<button type='button' @click='setA1'>a1세팅</button>
+		<hr>
+		
+		<!-- 위에는 if문별로 별개가 되는 것이고, 아래처럼 if바로 아래 else로 쓰면 하나의 쌍 -->
+		<h3 v-if='a2==100'>a2는 100 입니다</h3>
+		<h3 v-else>a2는 100이 아닙니다</h3>
+		<button type='button' @click='setA2'>a2세팅</button>
+		<hr>
+		
+		<div v-if='a3==100'>
+			<h3>a3는 100입니다</h3>
+			<h3>a3는 100입니다</h3>
+			<h3>a3는 100입니다</h3>
+		</div>
+		<div v-else>
+			<h3>a3는 100이 아닙니다</h3>
+			<h3>a3는 100이 아닙니다</h3>
+			<h3>a3는 100이 아닙니다</h3>
+		</div>
+		<button type='button' @click='setA3'>a3세팅</button>
+		<!-- v-if태그를 가진 태그까지 랜더링하고 싶지 않으면 template태그 사용 -->
+		<hr>
+		<template v-if='a4==100'>
+			<h3>a4는 100입니다</h3>
+			<h3>a4는 100입니다</h3>
+			<h3>a4는 100입니다</h3>
+		</template>
+		<template v-else>
+			<h3>a4는 100이 아닙니다</h3>
+			<h3>a4는 100이 아닙니다</h3>
+			<h3>a4는 100이 아닙니다</h3>
+		</template>
+		<button type="button" @click='setA4'>a4세팅</button>
+		<hr>
+
+		<template v-if='a5==100'>
+			<h3>a5는 100입니다</h3>
+		</template>
+		<template v-else-if='a5==200'>
+			<h3>a5는 200입니다</h3>
+		</template>
+		<template v-else-if='a5==300'>
+			<h3>a5는 300입니다</h3>
+		</template>
+		<button type="button" @click='setA5'>a5세팅</button>
+		<hr>
+
+		<template v-if='a6==100'>
+			<h3>data1</h3>
+			<input type="text" key='data1'/> <!-- key값을 주면 랜더링이 다시 됨 -->
+		</template>
+		<template v-else>
+			<h3>data2</h3>
+			<input type="text" key="data2"/>
+		</template>
+		<button type="button" @click='setA6'>a6세팅</button>
+		<hr>
+
+		<h3 v-show='a7==100'>a7는 100입니다</h3>
+		<h3 v-show='a7!=100'>a7는 100이 아닙니다</h3>
+		<button type="button" @click='setA7'>a7세팅</button>
+	</div>
+</body>
+</html>

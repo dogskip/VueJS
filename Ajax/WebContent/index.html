@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	window.onload = function(){
+		var vm1 = new Vue({
+			el:'#test1',
+			data : {
+				data1 : '',
+				data2 : '',
+				data3 : '',
+				data4 : '',
+			},
+			methods : {
+				getData : function(){
+					var self = this;
+					axios.get('data.json').then(function(response){
+						vm1.data1 = response.data.data1;
+						vm1.data2 = response.data.data2;
+						
+						self.data3 = response.data.data1;
+						self.data4 = response.data.data2;
+					
+						alert('data1: ' + vm1.data1 + ', data2: ' + vm1.data2 + ', data3 :' + self.data3 + ', data4 : '+vm1.data4);
+					}).catch(function(error) {
+						console.error("There was an error fetching the data!", error);
+					});
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="test1">
+		<h3>data1 : {{data1}}</h3>
+		<h3>data2 : {{data2}}</h3>
+		<h3>data3 : {{data3}}</h3>
+		<h3>data4 : {{data4}}</h3>
+		<button type='button' v-on:click='getData'>axios 테스트</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+	window.onload=function(){
+		var vm1 = new Vue({
+			el:'#test1',
+			data:{
+				data1:'',
+				data2:'',
+				result1:''
+			},
+	
+			watch:{
+				//이경우 데이터2는 변경이 안됨.
+				//data1이라는 watch 내 함수는 data1에 매칭된것임 것임
+				//이렇게 하면 복잡하니 conputed를 사용함
+				data1 : function(){
+					this.result1='data1:'+this.data1+', data2:'+this.data2
+				},
+				data2: function(){
+					this.result1='data1:'+this.data1+', data2:'+this.data2
+				}
+			},
+			
+			//이렇게 함수 하나만 만들면 됨
+			computed:{
+				result2:function(){
+					return 'data1 : ' + this.data1 + ', data2 :'+this.data2
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="test1">
+		<h3>{{data1}}</h3>
+		<h3>{{data2}}</h3>
+		data1 : <input type="text" v-model='data1'/>
+		data2 : <input type="text" v-model='data2'/>
+		<h3>result1: {{result1}}</h3>
+		<h3>result2: {{result2}}</h3>
+	</div>
+</body>
+</html>
